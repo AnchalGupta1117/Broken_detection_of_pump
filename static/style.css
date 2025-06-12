@@ -1,0 +1,269 @@
+/* Prediction Card Styling */
+.prediction-card {
+  margin-top: 1rem;
+  padding: 1.5rem;
+  background-color: #1e1e2f;
+  border: 1px solid #17a2b8;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(23, 162, 184, 0.15);
+  overflow-wrap: break-word;
+  word-break: break-word;
+  color: #f8f9fa;
+  transition: all 0.3s ease;
+}
+
+.prediction-card:hover {
+  transform: scale(1.01);
+  box-shadow: 0 0 18px rgba(23, 162, 184, 0.35);
+}
+
+.prediction-card h5 {
+  font-size: 1.2rem;
+  color: #17a2b8;
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.2rem;
+}
+
+.prediction-card h5 svg {
+  margin-right: 0.5rem;
+  flex-shrink: 0;
+}
+
+.prediction-card .list-group-item {
+  background-color: transparent;
+  color: #dee2e6;
+  font-size: 0.95rem;
+  border-color: rgba(255, 255, 255, 0.05);
+}
+
+.prediction-card .list-group-item strong {
+  color: #f8f9fa;
+}
+
+.prediction-card .badge {
+  font-size: 0.85rem;
+  padding: 0.4em 0.75em;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+/* Global dark mode */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #0d1117; /* deep dark */
+  color: #c9d1d9;
+  margin: 0;
+  padding: 0;
+}
+
+/* Animation for fade-in */
+.fade-in {
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.plot-box img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-top: 0.5rem;
+}
+
+/* Improve spacing */
+h4 {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+#resultSection, #plotContainer {
+  margin-bottom: 3rem;
+}
+
+#resultSection .card {
+  transition: transform 0.3s ease;
+}
+
+#resultSection .card:hover {
+  transform: scale(1.015);
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+}
+
+#resultSection ul.list-group li {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+h1, h4, h5, h6, label {
+  color: #eff2f6;
+}
+
+a {
+  color: #58a6ff;
+}
+
+.container {
+  padding-top: 2rem;
+}
+
+/* Card and input boxes */
+.card {
+  background-color: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 10px;
+}
+
+.card-title {
+  color: #f0f6fc;
+}
+
+input[type="file"].form-control {
+  background-color: #21262d;
+  color: #c9d1d9;
+  border: 1px solid #30363d;
+}
+
+input[type="file"].form-control::file-selector-button {
+  background-color: #30363d;
+  color: #f0f6fc;
+  border: none;
+}
+
+.btn-success {
+  background-color: #238636;
+  border: none;
+}
+
+.btn-success:hover {
+  background-color: #2ea043;
+}
+
+/* Prediction box */
+#predictionOutput {
+  background-color: #161b22;
+  color: #1b3a59;
+  border: 1px solid #30363d;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+#predictionOutput .card {
+  margin-bottom: 1rem;
+}
+
+#predictionOutput .col-md-6 {
+  padding-bottom: 1.5rem;
+}
+
+.prediction-block .badge {
+  font-size: 0.9rem;
+  padding: 0.4rem 0.75rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.2);
+}
+
+.prediction-block span {
+  font-size: 0.95rem;
+}
+
+.prediction-block h6.text-success {
+  color: #28a745;
+  font-weight: bold;
+}
+
+/* Prediction row */
+.prediction-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+}
+
+.prediction-label {
+  font-weight: 600;
+  min-width: 80px;
+}
+
+.prediction-value {
+  background-color: #21262d;
+  color: #c9d1d9;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-family: monospace;
+  font-size: 0.95rem;
+  border: 1px solid #30363d;
+}
+
+/* Plots container */
+#plotContainer .plot-pair {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.plot-box {
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+  padding: 15px;
+  text-align: center;
+  flex: 1 1 48%;
+}
+
+.plot-box h6 {
+  color: #f0f6fc;
+  margin-bottom: 10px;
+}
+
+.plot-box img {
+  width: 100%;
+  height: 300px;
+  object-fit: contain;
+  border-radius: 8px;
+  border: 1px solid #444c56;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0d1117;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #444c56;
+  border-radius: 10px;
+}
+/* Breakdown and Recovery UI blocks (Dark mode themed) */
+.block {
+  padding: 12px 18px;
+  border-left: 6px solid;
+  border-radius: 10px;
+  background: #161b22;
+  color: #dee2e6;
+  font-size: 0.95rem;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.05);
+  transition: transform 0.2s ease;
+}
+
+.block:hover {
+  transform: scale(1.01);
+}
+
+.block.broken {
+  border-color: #dc3545; /* red */
+  background: rgba(220, 53, 69, 0.15);
+}
+
+.block.recovering {
+  border-color: #ffc107; /* yellow */
+  background: rgba(255, 193, 7, 0.15);
+}
