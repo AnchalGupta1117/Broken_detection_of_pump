@@ -118,54 +118,6 @@ document.getElementById('processForm').addEventListener('submit', function (e) {
         `;
       }
 
-      // // Render prediction cards correctly inside a row
-      // if (data.breakdowns && data.breakdowns.length > 0) {
-      //   const row = document.createElement('div');
-      //   row.className = 'row g-4';
-
-      //   data.breakdowns.forEach(b => {
-      //     const col = document.createElement('div');
-      //     col.className = 'col-md-6 fade-in';
-
-      //     col.innerHTML = `
-      //       <div class="card bg-dark text-light border-info shadow-sm h-100">
-      //         <div class="card-body">
-      //           <h5 class="card-title text-info d-flex align-items-center">
-      //             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#17a2b8" class="bi bi-exclamation-triangle-fill me-2" viewBox="0 0 16 16">
-      //               <path d="M8.982 1.566a1.13 1.13 0 0 0-1.964 0L.165 13.233c-.457.778.091 1.767.982 1.767h13.706c.89 0 1.438-.99.982-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 0 .002 2 1 1 0 0 0-.002-2z"/>
-      //             </svg>
-      //             Broken Detected
-      //           </h5>
-      //           <ul class="list-group list-group-flush mt-3">
-      //             <li class="list-group-item bg-transparent text-light d-flex justify-content-between">
-      //               <span><strong>Initial Detection</strong></span>
-      //               <span class="text-warning">${b.start || 'N/A'}</span>
-      //             </li>
-      //             <li class="list-group-item bg-transparent text-light d-flex justify-content-between">
-      //               <span><strong>Final Detection</strong></span>
-      //               <span class="text-warning">${b.end || 'N/A'}</span>
-      //             </li>
-      //             <li class="list-group-item bg-transparent text-light d-flex justify-content-between">
-      //               <span><strong>Duration</strong></span>
-      //               <span class="badge bg-info text-dark">${b.duration || 'N/A'}</span>
-      //             </li>
-      //           </ul>
-      //         </div>
-      //       </div>
-      //     `;
-
-      //     row.appendChild(col);
-      //   });
-
-      //   predictionOutput.appendChild(row);
-      // } else if (data.message) {
-      //   predictionOutput.innerHTML = `
-      //     <div class="alert alert-success fade-in" role="alert">
-      //       ${data.message}
-      //     </div>
-      //   `;
-      // }
-
       // Render sensor and FFT plots
       if (data.plot_urls && data.fft_urls) {
         for (let i = 0; i < data.plot_urls.length; i++) {
