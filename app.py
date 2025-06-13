@@ -111,31 +111,7 @@ def process():
             else:
                 i += 1
 
-        # # Breakdown detection
-        # breakdowns = []
-        # i = 0
-        # while i < len(labels):
-        #     if labels[i] != 'NORMAL':
-        #         start_time = timestamps[i]
-        #         duration = 1
-        #         i += 1
-        #         while i < len(labels) and labels[i] != 'NORMAL':
-        #             duration += 1
-        #             i += 1
-        #         end_index = i - 1 if i - 1 < len(timestamps) else len(timestamps) - 1
-        #         end_time = timestamps[end_index]
-        #         total_seconds = duration * (window_size / 1)  # 1 Hz sampling
-        #         hours = int(total_seconds // 3600)
-        #         minutes = int((total_seconds % 3600) // 60)
-        #         breakdowns.append({
-        #             'start': str(start_time),
-        #             'end': str(end_time),
-        #             'duration': f"{hours} hours {minutes} minutes"
-        #         })
-        #     else:
-        #         i += 1
-
-        # Plotting
+        
         plot_urls = []
         fft_plot_urls = []
 
