@@ -18,14 +18,6 @@ Given time-series sensor data, the app:
 
 ---
 
-## 🧠 ML Pipeline
-
-- FFT-based feature extraction
-- SMOTETomek sampling for class balance
-- Stacking Classifier (RandomForest + XGBoost + KNN)
-- Model trained on labelled industrial sensor data
-
----
 
 ## 🔧 Tech Stack
 
