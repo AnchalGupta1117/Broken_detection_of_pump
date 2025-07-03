@@ -15,6 +15,41 @@
       <p class="lead text-white-80">Upload your sensor data CSV file and visualize the breakdown periods and FFT insights.</p>
     </div>
 
+
+
+
+    <div class="sample-section border border-info rounded-4 p-4 mb-5 ">
+      <h5 class="text-info fw-semibold mb-3 d-flex align-items-center fs-5">
+        <span class="me-2 bg-info rounded-circle d-inline-block" style="width: 12px; height: 12px;"></span>
+        Try with Sample Files
+      </h5>
+
+      <div class="d-flex justify-content-between flex-wrap gap-5">
+        <!-- Download Buttons Left -->
+        <div class="d-flex flex-wrap gap-2">
+          <a href="{{ url_for('static', filename='samples/sample1.csv') }}" class="btn btn-sm btn-sample1">📥 Download Sample 1</a>
+          <a href="{{ url_for('static', filename='samples/sample2.csv') }}" class="btn btn-sm btn-sample2">📥 Download Sample 2</a>
+          <a href="{{ url_for('static', filename='samples/sample3.csv') }}" class="btn btn-sm btn-sample3">📥 Download Sample 3</a>
+        </div>
+
+        <!-- Auto-Test Buttons Right -->
+        <div class="d-flex flex-wrap gap-2">
+          <button onclick="loadSampleFile('sample1.csv')" class="btn btn-sm btn-auto1">🚀 Auto-Test-with-sample-1</button>
+          <button onclick="loadSampleFile('sample2.csv')" class="btn btn-sm btn-auto2">🚀 Auto-Test-with-sample-2</button>
+          <button onclick="loadSampleFile('sample3.csv')" class="btn btn-sm btn-auto3">🚀 Auto-Test-with-sample-3</button>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
     <div class="card shadow-sm p-4 mb-5 bg-secondary text-light border-0">
       <h5 class="card-title mb-3">Upload CSV File</h5>
       <form id="processForm" enctype="multipart/form-data">
