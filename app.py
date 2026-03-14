@@ -5,6 +5,7 @@ import numpy as np
 import joblib
 import io
 import base64
+from pathlib import Path
 import matplotlib
 matplotlib.use('Agg') 
 import matplotlib.pyplot as plt
@@ -12,9 +13,33 @@ import matplotlib.pyplot as plt
 app = Flask(__name__)
 
 # Load model and encoder
-sensor_cols_from_model = joblib.load("sensor_columns.pkl")  
-model = joblib.load("rf_model.pkl")
-le = joblib.load("label_encoder.pkl")
+BASE_DIR = Path(__file__).resolve().parent
+sensor_columns_path = BASE_DIR / "sensor_columns.pkl"
+model_path = BASE_DIR / "rf_model.pkl"
+encoder_path = BASE_DIR / "label_encoder.pkl"
+
+
+def load_or_train_artifacts():
+    try:
+        sensor_cols = joblib.load(sensor_columns_path)
+        loaded_model = joblib.load(model_path)
+        loaded_encoder = joblib.load(encoder_path)
+        return sensor_cols, loaded_model, loaded_encoder
+    except Exception as e:
+        print(f"Model artifact load failed: {e}")
+        print("Attempting to retrain model artifacts with current environment...")
+
+        from train_model import train_and_save
+        train_and_save(str(BASE_DIR / "sensor_with_broken.csv"))
+
+        sensor_cols = joblib.load(sensor_columns_path)
+        loaded_model = joblib.load(model_path)
+        loaded_encoder = joblib.load(encoder_path)
+        print("Model artifacts retrained and loaded successfully.")
+        return sensor_cols, loaded_model, loaded_encoder
+
+
+sensor_cols_from_model, model, le = load_or_train_artifacts()
 drop_cols = ['sensor_00', 'sensor_15', 'sensor_50', 'sensor_51']
 
 @app.route('/')
