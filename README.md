@@ -4,7 +4,7 @@ This project predicts breakdowns and recovery phases of an industrial centrifuga
 
 ## 🚀 Live App
 
-👉 [Click here to try the app](https://web-production-bebef.up.railway.app)
+👉 [Click here to try the app](https://pump-predictor.onrender.com/)
 
 ---
 
