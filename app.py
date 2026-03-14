@@ -17,26 +17,44 @@ BASE_DIR = Path(__file__).resolve().parent
 sensor_columns_path = BASE_DIR / "sensor_columns.pkl"
 model_path = BASE_DIR / "rf_model.pkl"
 encoder_path = BASE_DIR / "label_encoder.pkl"
+artifact_load_error = None
 
 
 def load_or_train_artifacts():
+    global artifact_load_error
     try:
         sensor_cols = joblib.load(sensor_columns_path)
         loaded_model = joblib.load(model_path)
         loaded_encoder = joblib.load(encoder_path)
+        artifact_load_error = None
         return sensor_cols, loaded_model, loaded_encoder
     except Exception as e:
         print(f"Model artifact load failed: {e}")
         print("Attempting to retrain model artifacts with current environment...")
 
-        from train_model import train_and_save
-        train_and_save(str(BASE_DIR / "sensor_with_broken.csv"))
+        training_csv_path = BASE_DIR / "sensor_with_broken.csv"
+        if training_csv_path.exists():
+            try:
+                from train_model import train_and_save
+                train_and_save(str(training_csv_path))
 
-        sensor_cols = joblib.load(sensor_columns_path)
-        loaded_model = joblib.load(model_path)
-        loaded_encoder = joblib.load(encoder_path)
-        print("Model artifacts retrained and loaded successfully.")
-        return sensor_cols, loaded_model, loaded_encoder
+                sensor_cols = joblib.load(sensor_columns_path)
+                loaded_model = joblib.load(model_path)
+                loaded_encoder = joblib.load(encoder_path)
+                artifact_load_error = None
+                print("Model artifacts retrained and loaded successfully.")
+                return sensor_cols, loaded_model, loaded_encoder
+            except Exception as retrain_error:
+                artifact_load_error = f"Model load failed and retrain failed: {retrain_error}"
+                print(artifact_load_error)
+                return None, None, None
+
+        artifact_load_error = (
+            "Model load failed and training dataset is missing. "
+            "Please deploy compatible .pkl artifacts or include sensor_with_broken.csv."
+        )
+        print(artifact_load_error)
+        return None, None, None
 
 
 sensor_cols_from_model, model, le = load_or_train_artifacts()
@@ -49,6 +67,9 @@ def index():
 @app.route('/process', methods=['POST'])
 def process():
     try:
+        if model is None or le is None or sensor_cols_from_model is None:
+            return jsonify({'error': artifact_load_error or 'Model artifacts are not available'}), 503
+
         file = request.files.get('file')
         if not file:
             return jsonify({'error': 'No file uploaded'}), 400
